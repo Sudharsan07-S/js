@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .lineThrough{
+            text-decoration-line: line-through;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="input" placeholder="Enter the new task">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="list"></ul>
+    <script>
+        let arr = [];
+        function output(){
+            document.getElementById("list").innerHTML = "";
+            console.log(arr)
+            arr.map((val)=>{
+                console.log(document.getElementById("list").innerHTML
+                +=`<li>${val}</li>
+                    <button onclick="del('${val}')">Delete</button>`)
+            })
+            console.log(document.getElementById("list"))
+        }
+        function addTask(){
+            let input = document.getElementById("input").value;
+            arr.push(input);
+            output();
+        }
+        function del(delVal){
+            arr=[...arr.filter((val)=>val!=delVal)];
+            console.log(arr)
+            output();
+        }
+
+        document.getElementById("list").addEventListener('click',(e)=>{
+            console.log(e.target.classList.toggle("lineThrough"));
+            console.log(e.target)
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+</head>
+<body>
+    <h1 id="time">00:00:00 AM</h1>
+    <script>
+        setInterval(()=>{
+            const date = new Date();
+            let sec = date.getSeconds();
+            let min = date.getMinutes();
+            let hrs = date.getHours();
+            let ampm = hrs>=12?"PM":"AM";
+
+            hrs=hrs%12;
+            hrs!=0?hrs:hrs="12";
+
+            document.getElementById("time").innerHTML = `${hrs}:${min}:${sec} ${ampm}`
+
+        },1000)
+        
+
+    </script>
+</body>
+</html>
