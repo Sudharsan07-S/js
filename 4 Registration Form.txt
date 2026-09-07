@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="handleRegister(event)">
+        <div class="in1">
+            <input id="name" type="text">
+        </div>
+        <div class="in2">
+            <input id="email" type="text">
+        </div>
+        <div class="in3">
+            <input id="password" type="text">
+        </div>
+        <div class="in4">
+            <input id="mobile" type="text">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        function handleRegister(e){
+            console.log(document.getElementById("name").style)
+            e.preventDefault()
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let mobile = document.getElementById("mobile").value;
+
+            let namepattern = /^[A-Za-z\s]{3,}$/
+            let emailpattern = /^\w+@[a-z]+\.[a-z]+$/
+            let passpattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\W)(?=.*\d).{8,}$/
+            let mobpattern = /^\d{10}$/
+
+            if(!namepattern.test(name)){
+                document.getElementById("name").style.borderColor = "red";
+            }            
+            else{
+                document.getElementById("name").style.borderColor = "green";
+            }
+            if(!emailpattern.test(email)){
+                document.getElementById("email").style.borderColor = "red";
+            }
+            else{
+                document.getElementById("email").style.borderColor = "green";
+            }
+            if(!passpattern.test(password)){
+                document.getElementById("password").style.borderColor = "red";
+            }
+            else{
+                document.getElementById("password").style.borderColor = "green";
+            }
+            if(!mobpattern.test(mobile)){
+                document.getElementById("mobile").style.borderColor = "red";
+            }
+            else{
+                document.getElementById("mobile").style.borderColor = "green";
+            }
+        }
+    </script>
+</body>
+
+</html>
